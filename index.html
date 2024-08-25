@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Lembur Karyawan Indofood FID</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Kalkulator Lembur Karyawan Indofood FID</h1>
+            <p class="subtitle">by Najwal si Tamvan</p>
+            <label for="gp">Gaji Pokok (GP) per Bulan:</label>
+            <input type="number" id="gp" placeholder="Masukkan Gaji Pokok" step="0.01">
+
+            <label for="working_days">Jumlah Hari Kerja pada Bulan Ini:</label>
+            <input type="number" id="working_days" placeholder="Masukkan Jumlah Hari Kerja" step="1">
+            <small>Masukkan jumlah hari kerja di mana terdapat lembur. Jika tidak ada lembur, tidak perlu dihitung.</small>
+            
+            <label for="regular_overtime_hours">Jumlah Jam Lembur pada Hari Kerja:</label>
+            <input type="number" id="regular_overtime_hours" placeholder="Jam Lembur pada Hari Kerja" step="0.01">
+            
+            <label for="holiday_overtime_hours">Jumlah Jam Lembur pada Hari Libur:</label>
+            <input type="number" id="holiday_overtime_hours" placeholder="Jam Lembur pada Hari Libur" step="0.01">
+            
+            <button onclick="calculateOvertime()">Hitung Lembur</button>
+            
+            <div id="result" class="result"></div>
+        </div>
+
+        <!-- Card tambahan -->
+        <div class="card-secondary">
+            <h2>Informasi Tambahan</h2>
+            <p>Pastikan Anda mengisi semua data dengan benar sebelum menghitung lembur.</p>
+            <center><p>This Page is Unofficial</p></center>
+        </div>
+    </div>
+
+    <!-- Custom Pop-up -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <p>Pilih jawaban untuk melihat hasil:<br>Is Najwal Handsome?</p>
+            <button id="yesBtn" class="popup-button">Yes</button>
+            <button id="noBtn" class="popup-button">No</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
