@@ -29,13 +29,19 @@ function calculateOvertime() {
         total_overtime_pay += holiday_overtime_hours * 2 * hourly_rate;
     }
 
+    // Menghitung pendapatan total pada bulan ini
+    const total_income = gp + total_overtime_pay;
+
     // Menampilkan pop-up custom
     const popup = document.getElementById('popup');
     popup.style.display = 'flex';
 
     document.getElementById('yesBtn').onclick = function() {
         popup.style.display = 'none';
-        document.getElementById('result').textContent = `Total Upah Lembur Bulanan: Rp ${total_overtime_pay.toFixed(2)}`;
+        document.getElementById('result').innerHTML = `
+            Total Upah Lembur Bulanan: Rp ${total_overtime_pay.toFixed(2)}<br>
+            Total Pendapatan Bulanan (belum termasuk insentif dan potongan pajak, dll.): Rp ${total_income.toFixed(2)}
+        `;
     };
 
     document.getElementById('noBtn').onclick = function() {
