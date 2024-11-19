@@ -11,27 +11,40 @@
         <div class="card">
             <h1>Kalkulator Lembur Karyawan Indofood FID</h1>
             <p class="subtitle">by Najwal si Tamvan</p>
+        
             <label for="gp">Gaji Pokok (GP) per Bulan:</label>
             <input type="number" id="gp" placeholder="Masukkan Gaji Pokok" step="0.01">
-
-            <label for="working_days">Jumlah Hari Kerja Senin - Sabtu pada Bulan Ini:</label>
+        
+            <label for="working_days">Jumlah Hari Kerja Senin - Jumat/Sabtu yang lembur pada Bulan Ini:</label>
             <input type="number" id="working_days" placeholder="Masukkan Jumlah Hari Kerja" step="1">
-            <small>Masukkan jumlah hari kerja (Senin - Sabtu) di mana terdapat lembur. Jika tidak lembur, tidak perlu dihitung.</small>
+            <small>Masukkan jumlah hari kerja (Senin - Jumat/Sabtu) di mana terdapat lembur. Jika tidak lembur, tidak perlu dihitung.</small>
             
-            <label for="regular_overtime_hours">Jumlah Jam Lembur pada Hari Kerja Senin - Sabtu :</label>
+            <label for="regular_overtime_hours">Jumlah Jam Lembur pada Hari Kerja Senin - Jumat/Sabtu:</label>
             <input type="number" id="regular_overtime_hours" placeholder="Jam Lembur pada Hari Kerja" step="0.01">
-            
-            <label for="holiday_overtime_hours">Jumlah Jam Lembur pada Hari Libur:</label>
+        
+            <label for="sunday_work_days">Jumlah Hari Bekerja di Hari Libur yang lembur pada Bulan Ini:</label>
+            <input type="number" id="sunday_work_days" placeholder="Masukkan jumlah hari kerja di hari Libur" step="1">
+        
+            <label for="holiday_overtime_hours">Jumlah Jam Lembur pada Hari Libur di Bulan Ini:</label>
             <input type="number" id="holiday_overtime_hours" placeholder="Jam Lembur pada Hari Libur" step="0.01">
-            
+        
             <button onclick="calculateOvertime()">Hitung Lembur</button>
             
             <div id="result" class="result"></div>
         </div>
+        
 
         <!-- Card tambahan -->
         <div class="card-secondary">
             <h2>Informasi Tambahan</h2>
+            <ol>
+                <li>
+                    <p>Perhitungan Bayaran Lemburan telah disesuaikan dengan Pasal 31 ayat (1) PP 35/2021 dan Pasal 31 ayat (2) huruf a & b PP 35/2021.</p>
+                </li>
+                <li>
+                    <p>Website ini hanya dapat digunakan untuk menghitung biaya lembur untuk karyawan yang bekerja dalam sistem 6 hari kerja (Senin hingga Sabtu).</p>
+                </li>
+            </ol>
             <p>Pastikan Anda mengisi semua data dengan benar sebelum menghitung lembur.</p>
             <center><p><strong>THIS PAGE IS UNOFFICIAL!</strong> </p></center>
         </div>
