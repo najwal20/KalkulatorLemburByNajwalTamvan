@@ -1,11 +1,29 @@
+function calculateTotalHolidayOvertimeHours() {
+    const holidayOvertimeHoursInput = document.getElementById('holiday_overtime_hours_daily').value;
+    const hoursArray = holidayOvertimeHoursInput.split(',').map(num => parseFloat(num.trim()));
+
+    if (hoursArray.some(isNaN)) {
+        alert('Masukkan angka yang valid dalam format desimal, dipisahkan dengan koma.');
+        return 0;
+    }
+
+    return hoursArray.reduce((total, hours) => total + hours, 0); // Totalkan semua jam lembur
+}
+
 function calculateOvertime() {
     const gp = parseFloat(document.getElementById('gp').value);
     const working_days = parseFloat(document.getElementById('working_days').value);
     const regular_overtime_hours = parseFloat(document.getElementById('regular_overtime_hours').value);
     const sunday_work_days = parseFloat(document.getElementById('sunday_work_days').value);
-    const holiday_overtime_hours = parseFloat(document.getElementById('holiday_overtime_hours').value);
+    const totalHolidayOvertimeHours = calculateTotalHolidayOvertimeHours();
 
-    if (isNaN(gp) || isNaN(working_days) || isNaN(regular_overtime_hours) || isNaN(sunday_work_days) || isNaN(holiday_overtime_hours)) {
+    if (
+        isNaN(gp) ||
+        isNaN(working_days) ||
+        isNaN(regular_overtime_hours) ||
+        isNaN(sunday_work_days) ||
+        totalHolidayOvertimeHours === 0
+    ) {
         alert('Harap masukkan nilai yang valid.');
         return;
     }
@@ -24,34 +42,52 @@ function calculateOvertime() {
     }
 
     // Menghitung lembur pada hari libur
-    if (holiday_overtime_hours > 0) {
-        const sunday_hours_rate = (hours) => {
-            if (hours <= 7) return hours * 2 * hourly_rate;
-            if (hours === 8) return 7 * 2 * hourly_rate + 3 * hourly_rate;
-            return 7 * 2 * hourly_rate + 3 * hourly_rate + (hours - 8) * 4 * hourly_rate;
-        };
-        total_overtime_pay += sunday_hours_rate(holiday_overtime_hours) * sunday_work_days;
-    }
+    const holidayOvertimeHoursDaily = document
+        .getElementById('holiday_overtime_hours_daily')
+        .value.split(',')
+        .map(num => parseFloat(num.trim()));
+
+    holidayOvertimeHoursDaily.forEach(hours => {
+        let daily_overtime_pay = 0;
+
+        if (hours > 0) {
+            // Jam 1-7
+            const first_seven_hours = Math.min(hours, 7);
+            daily_overtime_pay += first_seven_hours * 2 * hourly_rate;
+
+            // Jam 8
+            if (hours > 7) {
+                const eighth_hour = Math.min(hours - 7, 1);
+                daily_overtime_pay += eighth_hour * 3 * hourly_rate;
+            }
+
+            // Jam 9 ke atas
+            if (hours > 8) {
+                const remaining_hours = hours - 8;
+                daily_overtime_pay += remaining_hours * 4 * hourly_rate;
+            }
+        }
+
+        total_overtime_pay += daily_overtime_pay;
+    });
 
     const total_income = gp + total_overtime_pay;
 
+    // Tampilkan pop-up "Is Najwal Handsome?"
     const popup = document.getElementById('popup');
     popup.style.display = 'flex';
 
     document.getElementById('yesBtn').onclick = function () {
         popup.style.display = 'none';
         document.getElementById('result').innerHTML = `
-            Total Upah Lembur Bulanan: Rp ${total_overtime_pay.toFixed(2)}<br>
-            Total Pendapatan Bulanan (belum termasuk insentif dan potongan pajak, dll.): Rp ${total_income.toFixed(2)}
+            Total Upah Lembur Bulanan: Rp ${total_overtime_pay.toLocaleString('id-ID')}<br>
+            Total Pendapatan Bulanan (belum termasuk insentif dan potongan pajak, dll.): Rp ${total_income.toLocaleString('id-ID')}
         `;
     };
 
     document.getElementById('noBtn').onclick = function () {
         alert('Coba lagi! Is Najwal Handsome?');
         popup.style.display = 'none';
-        calculateOvertime(); // Memanggil ulang jika pilih No
+        calculateOvertime(); // Memanggil ulang jika pilih "No"
     };
-
-
-    
 }

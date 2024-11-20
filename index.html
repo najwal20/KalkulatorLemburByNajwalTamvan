@@ -21,12 +21,16 @@
             
             <label for="regular_overtime_hours">Jumlah Jam Lembur pada Hari Kerja Senin - Jumat/Sabtu:</label>
             <input type="number" id="regular_overtime_hours" placeholder="Jam Lembur pada Hari Kerja" step="0.01">
-        
+            <small>Gunakan tanda titik (.) untuk memasukkan jam dalam format desimal. Contoh: 7.5 untuk 7 jam 30 menit.</small>
+
+
             <label for="sunday_work_days">Jumlah Hari Bekerja di Hari Libur yang lembur pada Bulan Ini:</label>
             <input type="number" id="sunday_work_days" placeholder="Masukkan jumlah hari kerja di hari Libur" step="1">
-        
-            <label for="holiday_overtime_hours">Jumlah Jam Lembur pada Hari Libur di Bulan Ini:</label>
-            <input type="number" id="holiday_overtime_hours" placeholder="Jam Lembur pada Hari Libur" step="0.01">
+
+            <label for="holiday_overtime_hours_daily">Jam Lembur per Hari di Hari Libur/Minggu:</label>
+            <input type="text" id="holiday_overtime_hours_daily" placeholder="Pisahkan dengan koma, contoh: 8,7,9">
+            <small>Masukkan jumlah jam lembur per hari pada hari libur/minggu, pisahkan dengan koma (contoh: 8,7,9 untuk 3 hari).</small>
+
         
             <button onclick="calculateOvertime()">Hitung Lembur</button>
             
@@ -36,7 +40,7 @@
 
         <!-- Card tambahan -->
         <div class="card-secondary">
-            <h2>Informasi Tambahan</h2>
+            <center><h2>NOTE:</h2></center>
             <ol>
                 <li>
                     <p>Perhitungan Bayaran Lemburan telah disesuaikan dengan Pasal 31 ayat (1) PP 35/2021 dan Pasal 31 ayat (2) huruf a & b PP 35/2021.</p>
