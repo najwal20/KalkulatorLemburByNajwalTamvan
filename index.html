@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalkulator Lembur Karyawan Indofood FID</title>
+    <title>Kalkulator Lembur Karyawan Indofood CBP</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <div class="card">
-            <h1>Kalkulator Lembur Karyawan Indofood FID</h1>
+            <h1>Kalkulator Lembur Karyawan Indofood CBP</h1>
             <p class="subtitle">by Najwal si Tamvan</p>
         
             <label for="gp">Gaji Pokok (GP) per Bulan:</label>
@@ -23,10 +24,6 @@
             <input type="number" id="regular_overtime_hours" placeholder="Jam Lembur pada Hari Kerja" step="0.01">
             <small>Gunakan tanda titik (.) untuk memasukkan jam dalam format desimal. Contoh: 7.5 untuk 7 jam 30 menit.</small>
 
-
-            <label for="sunday_work_days">Jumlah Hari Bekerja di Hari Libur yang lembur pada Bulan Ini:</label>
-            <input type="number" id="sunday_work_days" placeholder="Masukkan jumlah hari kerja di hari Libur" step="1">
-
             <label for="holiday_overtime_hours_daily">Jam Lembur per Hari di Hari Libur/Minggu:</label>
             <input type="text" id="holiday_overtime_hours_daily" placeholder="Pisahkan dengan koma, contoh: 8,7,9">
             <small>Masukkan jumlah jam lembur per hari pada hari libur/minggu, pisahkan dengan koma (contoh: 8,7,9 untuk 3 hari).</small>
@@ -35,8 +32,25 @@
             <button onclick="calculateOvertime()">Hitung Lembur</button>
             
             <div id="result" class="result"></div>
+
+            
         </div>
         
+        <!-- Detail Button (initially hidden) -->
+        <button id="detailBtn" class="calculate-btn" style="display: none; margin-top: 15px;">
+            <i class="fas fa-calculator"></i> Lihat Perhitungan Detail
+        </button>
+
+        <!-- Detail Popup -->
+        <div id="detailPopup" class="popup">
+            <div class="popup-content" style="max-width: 600px;">
+                <h3><i class="fas fa-calculator"></i> Detail Perhitungan</h3>
+                <div id="detailContent" style="max-height: 60vh; overflow-y: auto;"></div>
+                <button onclick="closeDetailPopup()" class="popup-button">
+                    <i class="fas fa-times"></i> Tutup
+                </button>
+            </div>
+        </div>
 
         <!-- Card tambahan -->
         <div class="card-secondary">

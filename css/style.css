@@ -75,14 +75,6 @@ button:hover {
     transform: scale(1.05);
 }
 
-.result {
-    margin-top: 20px;
-    font-weight: bold;
-    text-align: center;
-    font-size: 18px;
-    color: #2c3e50;
-}
-
 small {
     display: block;
     margin-bottom: 20px;
@@ -104,8 +96,8 @@ small {
 }
 
 .popup-content {
-    background-color: #fefefe;
-    padding: 20px;
+    background-color: #dbccf0;
+    padding: 30px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
@@ -113,7 +105,7 @@ small {
 
 .popup-button {
     margin: 10px;
-    padding: 10px 20px;
+    padding: 10px 10px;
     background: linear-gradient(135deg, #6a82fb, #fc5c7d);
     color: white;
     border: none;
@@ -127,3 +119,98 @@ small {
 }
 
 
+/* HASIL PERHITUNGAN */
+.result-box {
+    background: rgba(230, 176, 239, 0.9);
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 20px;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    padding: 5px 0;
+}
+
+.result-total {
+    font-weight: bold;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    margin-top: 5px;
+}
+
+.rate-info {
+    font-size: 15px;
+    color: #2f52ff;
+    margin-bottom: 15px;
+    text-align: center;
+    padding: 10px;
+    background: rgba(10, 47, 92, 0.1);
+    border-radius: 2px;
+}
+
+.rate-info i {
+    margin-right: 5px;
+}
+
+/* Detail Button */
+#detailBtn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #8289ee, #6a82fb);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+#detailBtn:hover {
+    background: linear-gradient(135deg, #6a82fb, #8289ee);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Detail Popup Content */
+.detail-step {
+    background: rgba(255,255,255,0.9);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-left: 4px solid #6a82fb;
+}
+
+.detail-formula {
+    font-family: 'Courier New', monospace;
+    background: #f5f5f5;
+    padding: 8px 12px;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 5px 0;
+    font-size: 14px;
+    color: #2c3e50;
+}
+
+.detail-value {
+    font-weight: bold;
+    color: #6a82fb;
+}
+
+
+.detail-formula strong {
+    color: #2c3e50;
+    display: inline-block;
+    margin-top: 5px;
+    padding-top: 5px;
+    border-top: 1px dashed #ccc;
+}
